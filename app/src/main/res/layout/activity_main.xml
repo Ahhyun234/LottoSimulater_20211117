@@ -155,5 +155,49 @@
         android:layout_height="wrap_content"
         android:text="로또 한장 구매하기"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="사용한 금액: "
+            android:textColor="@color/black"/>
+
+
+        <TextView
+            android:id="@+id/txtUsedMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0원"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="벌은 금액: "
+            android:textColor="@color/black"/>
+
+
+        <TextView
+            android:id="@+id/txtEarnedMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0원"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>
