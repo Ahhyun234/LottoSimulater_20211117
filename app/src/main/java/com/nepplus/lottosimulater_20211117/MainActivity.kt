@@ -12,6 +12,8 @@ class MainActivity : AppCompatActivity() {
     var mBonusNum = 0
     lateinit var mLottoNumTxtList: ArrayList<TextView>
 
+    val mMyLottoNumArr = arrayListOf(35,14,17,38,44,7)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,7 +30,25 @@ class MainActivity : AppCompatActivity() {
             makeLottoNumbers()
 //        보너스 번호 생성
             makeBonudNum()
+
+//        등수 판정
+            checkLottoRank()
         }
+    }
+
+    fun checkLottoRank(){
+//      내 숫자 6개가 당첨된 번호 6개 중 몇개나 맞췄는지?
+
+        var correctCount = 0
+
+        for ( myNum in mMyLottoNumArr) {
+//            맞췄는가? -> 내 번호가 당첨번호에 있는가?
+            if(mWinLottoNumArr.contains(myNum)){
+                correctCount++
+            }
+        }
+
+        Log.d("맞춘 갯수","${correctCount}")
 
 
     }
