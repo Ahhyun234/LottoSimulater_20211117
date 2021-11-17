@@ -32,6 +32,9 @@ class MainActivity : AppCompatActivity() {
 
     val mRankCountList = arrayListOf(0, 0, 0, 0, 0, 0)
 
+//    지금 자동 구매 중인가?
+    var isAutoOn = true
+
     //    할일을 관리하는 클래스
     lateinit var mHandler: Handler
 
@@ -68,6 +71,19 @@ class MainActivity : AppCompatActivity() {
     fun setupEvent() {
 
         btnAutoBuyLotto.setOnClickListener {
+
+            if(!isAutoOn){
+                mHandler.post(buyLottoRunnable)
+                isAutoOn = true
+                btnAutoBuyLotto.text = "자동 구매 종료하기"
+            }
+            else{
+//                다음 구매 할 일 제거
+
+                mHandler.removeCallbacks(buyLottoRunnable)
+                isAutoOn= false
+                btnAutoBuyLotto.text = "자동구매 재개"
+            }
 
 
             while (true) {
