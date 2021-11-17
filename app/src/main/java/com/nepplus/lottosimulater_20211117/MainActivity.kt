@@ -9,7 +9,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     val mWinLottoNumArr = ArrayList<Int>()
-    lateinit var mLottoNumTxtList : ArrayList<TextView>
+    var mBonusNum = 0
+    lateinit var mLottoNumTxtList: ArrayList<TextView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,19 +18,32 @@ class MainActivity : AppCompatActivity() {
 
         setupEvent()
         setValues()
-   }
+    }
 
     fun setupEvent() {
 
 
         btnBuyLotto.setOnClickListener {
 //        로또 번호 6개 생성
-        makeLottoNumbers()
+            makeLottoNumbers()
 //        보너스 번호 생성
-
+            makeBonudNum()
         }
 
 
+    }
+
+    fun makeBonudNum() {
+        while (true){
+            val randomNum = (1..45).random()
+            val isDupOk = !mWinLottoNumArr.contains(randomNum)
+            if (isDupOk)  {
+                mBonusNum= randomNum
+                break
+            }
+        }
+//        보너스 번호 텍스트뷰에 반영
+        txtLottoBonusNum.text= mBonusNum.toString()
     }
 
 
@@ -56,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 //                    숫자를 당첨 번호로 추가
 
                     mWinLottoNumArr.add(randonNum)
-                    break;
+                    break
                 }
             }
 
@@ -67,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 
 //        당첨 번호 6개 확인
 
-        for (i in 0 until 6 ){
+        for (i in 0 until 6) {
 //            txtView를 i 번 째 것을 커내 비교해보자
 
             mLottoNumTxtList[i].text = mWinLottoNumArr[i].toString()
@@ -89,7 +103,14 @@ class MainActivity : AppCompatActivity() {
 ///////////이 방법은 귀찮아서 사용하지 않음
 //        mLottoNumTxtList = ArrayList<TextView>()
 //        mLottoNumTxtList.add.
-        mLottoNumTxtList = arrayListOf(txtLottoNum1,txtLottoNum2,txtLottoNum3,txtLottoNum4,txtLottoNum5,txtLottoNum6)
+        mLottoNumTxtList = arrayListOf(
+            txtLottoNum1,
+            txtLottoNum2,
+            txtLottoNum3,
+            txtLottoNum4,
+            txtLottoNum5,
+            txtLottoNum6
+        )
 
     }
 }
