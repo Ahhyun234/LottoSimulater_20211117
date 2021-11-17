@@ -52,11 +52,28 @@ class MainActivity : AppCompatActivity() {
                 val randonNum = (Math.random() *45 +1).toInt()
                 Log.d("랜덤",randonNum.toString())
 
-                if(true){
+//                ////////////////////중복검사///////////////////////
+
+                val isDupOk = !mWinLottoNumArr.contains(randonNum)
+
+
+                if(isDupOk){
+//                    숫자를 당첨 번호로 추가
+
+                    mWinLottoNumArr.add(randonNum)
                     break;
                 }
             }
 
+        }
+//Array List의 sort기능 활용
+
+        mWinLottoNumArr.sort()
+
+//        당첨 번호 6개 확인
+
+        for( num in mWinLottoNumArr){
+            Log.d("당첨번호", num.toString())
         }
 
     }
