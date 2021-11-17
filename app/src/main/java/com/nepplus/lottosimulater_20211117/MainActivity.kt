@@ -24,6 +24,9 @@ class MainActivity : AppCompatActivity() {
 
     val mMyLottoNumArr = arrayListOf(35,14,17,38,44,7)
 
+//    ArrayList해야 함
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -70,27 +73,39 @@ class MainActivity : AppCompatActivity() {
             6-> {
                 Log.d("등수","1등입니다." )
                 mEarnedMoney += 5000000000
+                mRankcountList[0]++
+                txtRank1.text="${mRankCountList[0]}회"
             }
             5-> {
 //                보너스 번호 검사 해야 함 => 보너스 번호가 내 번호 안에 있는가?
                 if(mMyLottoNumArr.contains(mBonusNum)){
                     Log.d("등수", "2등입니다.")
                     mEarnedMoney += 50000000
+                    mRankcountList[1]++
+                    txtRank2.text="${mRankCountList[1]}회"
                 }
                 else{Log.d("등수", "3등입니다.")
                     mEarnedMoney += 2000000
+                    mRankcountList[2]++
+                    txtRank3.text="${mRankCountList[2]}회"
                 }
 
                 }
             4-> {Log.d("등수", "4등입니다.")
                 mEarnedMoney +=50000
+                mRankcountList[3]++
+                txtRank4.text="${mRankCountList[3]}회"
 
             }
             3->{Log.d("등수", "5등입니다.")
                 mUsedMoney -=5000
+                mRankcountList[4]++
+                txtRank5.text="${mRankCountList[4]}회"
 
             }
             else-> {Log.d("등수", "꽝 입니다.")
+                mRankcountList[5]++
+                txtRank6.text="${mRankCountList[5]}회"
 
             }
         }
